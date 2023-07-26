@@ -32,11 +32,11 @@ CREATE TABLE replies (
     id INTEGER PRIMARY KEY,
     user_id INTEGER NOT NULL,
     question_id INTEGER NOT NULL,
-    children_reply_id INTEGER,
-    body TEXT NOT NULL,
+    parent_id INTEGER,
+    reply TEXT NOT NULL,
     FOREIGN KEY (question_id) REFERENCES questions(id),
     FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (children_reply_id) REFERENCES replies(id)
+    FOREIGN KEY (parent_id) REFERENCES replies(id)
 );
 
 CREATE TABLE question_likes (
@@ -71,3 +71,21 @@ VALUES
     (4, 1, 'Is 1 + 1 ACTUALLY equals to 2?');
 
 INSERT INTO
+    replies (user_id, question_id, parent_id, reply)
+VALUES
+    (1,1,NULL, 'yes one plus one is two'),
+    (2,2,NULL, 'my mom loves me :)'),
+    (3,1,1, 'no you'),
+    (4,2,2, 'stop the cap'),
+    (2,1,1, 'is mayonaise an instrument?');
+
+INSERT INTO
+    question_likes (question_id, user_id)
+VALUES  
+    (1,1),
+    (1,2),
+    (1,3),
+    (1,4),
+    (2,1),
+    (2,2);
+    

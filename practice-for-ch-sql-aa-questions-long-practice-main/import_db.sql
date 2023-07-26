@@ -16,8 +16,8 @@ CREATE TABLE questions (
     id INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
     body TEXT NOT NULL,
-    user_id INTEGER NOT NULL,
-    FOREIGN KEY (users_id) REFERENCES users(id)
+    user_id INTEGER ,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 
 );
 
@@ -25,8 +25,8 @@ CREATE TABLE question_follows (
     id INTEGER PRIMARY KEY,
     user_id INTEGER NOT NULL,
     question_id INTEGER NOT NULL,
-    FOREIGN KEY (questions_id) REFERENCES questions(id),
-    FOREIGN KEY (users_id) REFERENCES users(id)
+    FOREIGN KEY (question_id) REFERENCES questions(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE replies (
@@ -35,8 +35,8 @@ CREATE TABLE replies (
     question_id INTEGER NOT NULL,
     children_reply_id INTEGER,
     body TEXT NOT NULL,
-    FOREIGN KEY (questions_id) REFERENCES questions(id),
-    FOREIGN KEY (users_id) REFERENCES users(id),
+    FOREIGN KEY (question_id) REFERENCES questions(id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (children_reply_id) REFERENCES replies(id)
 );
 
@@ -44,8 +44,8 @@ CREATE TABLE question_likes (
     id INTEGER PRIMARY KEY,
     user_id INTEGER NOT NULL,
     question_id INTEGER NOT NULL,
-    FOREIGN KEY (questions_id) REFERENCES questions(id),
-    FOREIGN KEY (users_id) REFERENCES users(id)
+    FOREIGN KEY (question_id) REFERENCES questions(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 INSERT INTO

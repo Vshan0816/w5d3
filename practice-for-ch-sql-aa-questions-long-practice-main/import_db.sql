@@ -80,7 +80,7 @@ VALUES
     (2,1,1, 'is mayonaise an instrument?');
 
 INSERT INTO
-    question_likes (question_id, user_id)
+    question_likes (question_id, )
 VALUES  
     (1,1),
     (1,2),

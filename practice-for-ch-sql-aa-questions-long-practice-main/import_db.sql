@@ -58,14 +58,16 @@ VALUES
 INSERT INTO
     questions (title, body, user_id)
 VALUES
-    ('Is 1 + 1 ACTUALLY equals to 2?', 'In the binary system, we have 2 digits only: 0 and 1, where 1+1=10. In the decimal system, the one that we mostly use, we have 10 digits (0-9), and 1+1 is always 2. We all made an agreement about a set of rules. Based on these rules, 1+1=2 for the decimal system.', (SELECT id FROM users WHERE fname = 'Vincent') ),
-    ('Does my mom actually love me?', 'I know that my mom is my biological mother, but it feels like she is my step-mom. Help.', (SELECT id FROM users WHERE fname = 'Sean'));
+    ('Is 1 + 1 ACTUALLY equals to 2?', 'In the binary system, we have 2 digits only: 0 and 1, where 1+1=10. In the decimal system, the one that we mostly use, we have 10 digits (0-9), and 1+1 is always 2. We all made an agreement about a set of rules. Based on these rules, 1+1=2 for the decimal system.', 2 ),
+    ('Does my mom actually love me?', 'I know that my mom is my biological mother, but it feels like she is my step-mom. Help.', 1);
 
 INSERT INTO
     question_follows (user_id, question_id, title)
 VALUES
-    (((SELECT id FROM users WHERE fname = 'Vincent')), 1, (SELECT title FROM questions WHERE id = 1)),
-    (((SELECT id FROM users WHERE fname = 'Vincent')), 2, (SELECT title FROM questions WHERE id = 2)),
-    (((SELECT id FROM users WHERE fname = 'Sean')), 1, (SELECT title FROM questions WHERE id = 1)),
-    (((SELECT id FROM users WHERE fname = 'Dennis')), 2, (SELECT title FROM questions WHERE id = 2)),
-    (((SELECT id FROM users WHERE fname = 'Kin')), 1, (SELECT title FROM questions WHERE id = 1));
+    (2, 1, 'Is 1 + 1 ACTUALLY equals to 2?' ),
+    (2, 2, 'Does my mom actually love me?'),
+    (1, 1, 'Is 1 + 1 ACTUALLY equals to 2?'),
+    (3, 2, 'Does my mom actually love me?'),
+    (4, 1, 'Is 1 + 1 ACTUALLY equals to 2?');
+
+INSERT INTO
